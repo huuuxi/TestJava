@@ -27,7 +27,7 @@ public class TestGoogleGuava {
 	 * 使用的是默认的collections的不可变set，但是set的引用还是可以变的；
 	 */
 	public static void testImmutableSet(){
-		Set<String> strs = new HashSet<>();
+		Set<String> strs = new HashSet<String>();
 		strs.add("a");
 		strs.add("b");
 		Set<String> immutableSet =  Collections.unmodifiableSet(strs);
@@ -47,7 +47,7 @@ public class TestGoogleGuava {
 	 * builder 模式可以建造
 	 */
 	public static void testImmutableSet2(){
-		Set<String> strs = new HashSet<>();
+		Set<String> strs = new HashSet<String>();
 		strs.add("a");
 		strs.add("b");
 		ImmutableSet<String> immutableSet = ImmutableSet.copyOf(strs);
