@@ -8,6 +8,7 @@ import org.apache.log4j.FileAppender;
 import org.apache.log4j.Layout;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.MDC;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.SimpleLayout;
 
@@ -44,6 +45,10 @@ public class TestLog4j {
 	public TestLog4j(){
 		System.getProperties();
 		PropertyConfigurator.configure("target/classes/local/log4j.properties");
+	}
+	
+	public void testMDC(){
+		MDC mdc;
 	}
 	
 	public static void main(String[] args) {
