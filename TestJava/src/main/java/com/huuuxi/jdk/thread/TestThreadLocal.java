@@ -9,13 +9,20 @@ package com.huuuxi.jdk.thread;
  *	我们知道在一般情况下，只有无状态的Bean才可以在多线程环境下共享，在Spring中，绝大部分Bean都可以声明为singleton作用域。就是因为Spring对一些Bean（如RequestContextHolder、TransactionSynchronizationManager、LocaleContextHolder等）中非线程安全状态采用ThreadLocal进行处理，让它们也成为线程安全的状态，因为有状态的Bean就可以在多线程中共享了。
  *
  *	PS: 我的理解，ThreadLocal只是让变量能复制拷贝，但是不能让变量通讯，即多线程之间不会通信，只会使用且对象不冲突；
+ *	PS:	在使用单例的情况下，效果会更明显，spring的bean为单例；
  */
 public class TestThreadLocal {
 
 	public static void main(String[] args) {
-		Mythead my1 = new Mythead();
-		Mythead my2 = new Mythead();
-		Mythead my3 = new Mythead();
+		testThreadLocal();
+	}
+	
+	public static void testThreadLocal(){
+		MyClass  myClass= new MyClass();
+		
+		Mythead my1 = new Mythead(myClass);
+		Mythead my2 = new Mythead(myClass);
+		Mythead my3 = new Mythead(myClass);
 		
 		my1.start();
 		my2.start();
@@ -26,23 +33,31 @@ public class TestThreadLocal {
 class Mythead extends Thread{
 	
 	// ThreadLocal 维护一个 Integer 对象
-	ThreadLocal<Integer> vars = new ThreadLocal<Integer>(){
-		@Override
-		protected Integer initialValue() {
-			return 0;
-		}
-	};
+	private MyClass myClass;
+	
+	public Mythead(MyClass myClass){
+		this.myClass = myClass;
+	}
 	
 	@Override
 	public void run() {
 		// 异步延迟加载，第一次get() 后，初始化执行 
-		/*if (vars.get() == null) {
-			vars.set(0);
-		}*/
-		while (vars.get() < 3) {
-			System.out.println(Thread.currentThread().getName()+"----:"+vars.get() );
-			vars.set(vars.get() +1);
+		//线程安全
+		while (myClass.vars.get() < 3) {
+			System.out.println(Thread.currentThread().getName()+"----:"+myClass.vars.get() );
+			myClass.vars.set(myClass.vars.get() +1);
+		}
+		// 非线程安全
+		while(myClass.var < 3){
+			System.out.println(Thread.currentThread().getName()+"----:"+myClass.var++ );
 		}
 	}
 	
+}
+// 对象类，需要同步和local存储的；
+class MyClass{
+	public Integer var = 0;
+	public ThreadLocal<Integer> vars = new ThreadLocal<Integer>(){
+		protected Integer initialValue() {return 0;};
+	};
 }
