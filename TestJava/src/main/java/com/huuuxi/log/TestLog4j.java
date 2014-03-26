@@ -9,8 +9,10 @@ import org.apache.log4j.Layout;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
+import org.apache.log4j.NDC;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.SimpleLayout;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author admin
@@ -47,8 +49,18 @@ public class TestLog4j {
 		PropertyConfigurator.configure("target/classes/local/log4j.properties");
 	}
 	
-	public void testMDC(){
-		MDC mdc;
+	/**
+	 * MDC NDC
+	 *  MDC use hashtable store ThreadLocal;在多线程下使用比较方便；
+	 *  NDC 直接取 Thread 的 currentThread
+	 *  
+	 */
+	public void testMDCandNDC(){
+		
+		//MDC mdc;
+		//NDC	ndc;
+		MDC.put("username", "brthcalm");
+		logger.info("new name");
 	}
 	
 	public static void main(String[] args) {
@@ -57,6 +69,7 @@ public class TestLog4j {
 		TestLog4j test = new TestLog4j();
 		test.logger.info("abddd");
 		test.logger.warn("------------");
+		test.testMDCandNDC();
 		
 	}
 	
