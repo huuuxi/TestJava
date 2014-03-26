@@ -1,4 +1,4 @@
-package com.huuuxi.jdk;
+package com.huuuxi.jdk.thread;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
