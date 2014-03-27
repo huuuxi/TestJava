@@ -16,14 +16,22 @@ public class TestThreadLocal {
 	public static void main(String[] args) {
 		testThreadLocal();
 	}
-	
+	/**
+	 * 
+	 * 	MyRunnable r = new MyRunnable(); 
+     *   System.out.println(r.foo == r.foo);
+     *   Thread ta = new Thread(r, "Thread-A"); 
+     *   Thread tb = new Thread(r, "Thread-B"); 
+	 * 	这里例子和下面的多线程区别在于，一个是Runable，只初始化了一次，那么里面的对象，也是一个对象；
+	 * 	下面例子，继承 Thread，初始化了N次里面的对象；
+	 * */
 	public static void testThreadLocal(){
 		MyClass  myClass= new MyClass();
 		
 		Mythead my1 = new Mythead(myClass);
 		Mythead my2 = new Mythead(myClass);
 		Mythead my3 = new Mythead(myClass);
-		
+		System.out.println(my1.myClass == my2.myClass);
 		my1.start();
 		my2.start();
 		my3.start();
@@ -33,10 +41,10 @@ public class TestThreadLocal {
 class Mythead extends Thread{
 	
 	// ThreadLocal 维护一个 Integer 对象
-	private MyClass myClass;
+	public MyClass myClass = new MyClass();
 	
 	public Mythead(MyClass myClass){
-		this.myClass = myClass;
+		//this.myClass = myClass;
 	}
 	
 	@Override
@@ -56,8 +64,8 @@ class Mythead extends Thread{
 }
 // 对象类，需要同步和local存储的；
 class MyClass{
-	public Integer var = 0;
-	public ThreadLocal<Integer> vars = new ThreadLocal<Integer>(){
+	public  Integer var = 0;
+	public static ThreadLocal<Integer> vars = new ThreadLocal<Integer>(){
 		protected Integer initialValue() {return 0;};
 	};
 }
