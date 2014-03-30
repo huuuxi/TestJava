@@ -27,7 +27,8 @@ import java.nio.channels.FileChannel;
 public class TestBuffer {
 
 	public static void main(String[] args) {
-		testBuffers();
+		//testBuffers();
+		testTheBuffer();
 	}
 	public static void testBuffers(){
 		// 非直接缓存，allocateDriect()直接缓存；
@@ -69,7 +70,43 @@ public class TestBuffer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public static void testTheBuffer(){
+		ByteBuffer bf = ByteBuffer.allocate(10);
+		for(int i=1;i<9 ;i++){
+			bf.put((byte) i);
+		}
 		
+		System.out.println("capacity:"+bf.capacity());
+		System.out.println("limit:"+bf.limit());
+		System.out.println("position:"+bf.position());
 		
+		bf.flip();
+		System.out.println("after flip:");
+		System.out.println("capacity:"+bf.capacity());
+		System.out.println("limit:"+bf.limit());
+		System.out.println("position:"+bf.position());
+		
+		bf.mark();
+		System.out.println("after mark:");
+		System.out.println("capacity:"+bf.capacity());
+		System.out.println("limit:"+bf.limit());
+		System.out.println("position:"+bf.position());
+		
+		bf.reset();
+		System.out.println("after reset:");
+		System.out.println("capacity:"+bf.capacity());
+		System.out.println("limit:"+bf.limit());
+		System.out.println("position:"+bf.position());
+		
+		bf.clear();
+		System.out.println("after clear:");
+		System.out.println("capacity:"+bf.capacity());
+		System.out.println("limit:"+bf.limit());
+		System.out.println("position:"+bf.position());
+		
+		bf.limit(1);
+		bf.put((byte) 9);;//超出limit范围，抛出java.nio.BufferOverflowException异常  
+		bf.put((byte) 10);
 	}
 }
