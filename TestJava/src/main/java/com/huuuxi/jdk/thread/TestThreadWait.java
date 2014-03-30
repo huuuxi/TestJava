@@ -1,5 +1,6 @@
 package com.huuuxi.jdk.thread;
 
+
 public class TestThreadWait {
 
 	public static void main(String[] args) {
