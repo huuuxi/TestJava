@@ -1,4 +1,4 @@
-package com.huuuxi.jdk;
+package com.huuuxi.jdk.nio;
 
 import java.io.IOException;
 import java.io.InputStream;

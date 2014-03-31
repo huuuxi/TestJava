@@ -1,2 +1,9 @@
 2014-03-22 11:55:36:INFO main com.huuuxi.log.TestLog4j - abddd
 2014-03-22 11:55:36:WARN main com.huuuxi.log.TestLog4j - ------------
+2014-03-26 11:05:14:INFO main com.huuuxi.log.TestCommonsLogging - hi ,this  is  commons logging
+2014-03-26 11:31:34:INFO main com.huuuxi.log.TestLog4j - abddd
+2014-03-26 11:31:34:WARN main com.huuuxi.log.TestLog4j - ------------
+2014-03-26 11:31:34:INFO main com.huuuxi.log.TestLog4j - new name
+2014-03-26 11:32:21:INFO main com.huuuxi.log.TestLog4j - abddd
+2014-03-26 11:32:21:WARN main com.huuuxi.log.TestLog4j - ------------
+2014-03-26 11:32:21:INFO main com.huuuxi.log.TestLog4j - new name

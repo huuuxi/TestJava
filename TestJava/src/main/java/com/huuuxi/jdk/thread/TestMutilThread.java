@@ -19,7 +19,7 @@ public class TestMutilThread {
 	 */
 	public static void testDaemon(){
 		MyThread myThread = new MyThread();
-		Thread demon = new Thread(new MyRunnable());
+		Thread demon = new Thread(new MyRunnables());
 		demon.setDaemon(true);
 		myThread.start();
 		demon.start();
@@ -51,7 +51,7 @@ class MyThread extends Thread{
 		}
 	}
 }
-class MyRunnable implements Runnable{
+class MyRunnables implements Runnable{
 	@Override
 	public void run() {
 		for (int i = 0; i < 11111; i++) {
