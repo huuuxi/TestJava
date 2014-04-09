@@ -16,7 +16,25 @@ import java.net.URL;
 public class TestClassLoader {
 
 	public static void main(String[] args) {
+		testReflact();
 		test();
+	}
+	public static void testReflact(){
+		try {
+			Class clazz = Class.forName("com.huuuxi.jdk.TestAssert");
+			Object obj = clazz.newInstance();
+			System.out.println(obj.getClass().getClassLoader());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public static void test(){
