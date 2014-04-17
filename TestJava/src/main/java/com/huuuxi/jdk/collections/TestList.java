@@ -1,7 +1,9 @@
 package com.huuuxi.jdk.collections;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -123,4 +125,23 @@ public class TestList {
 		System.out.println("search:"+stack.search("1"));
 		
 	}
+	/**
+	 * Queue 
+	 * 		element() 方法和 peek() 方法区别就在于 如果为空，抛出异常；
+	 * 		offer() 和 add() 区别在于，抛出异常；
+	 * 		poll() 删除返回第一个值，如果为空，返回null；remove() 则会返回异常；
+	 * 
+	 */
+	public static void testQueue(){
+		Queue queue ;
+	}
+	/**
+	 * 	 有意思的方法：addFirst() addLast(),区别于 offerFirst() offerLast() ，前者在队列 不限制的时候使用，后者需要在队列大小限制的时候使用；
+	 * 			getFrist() getLast() 都会抛出异常，假如不存在；相对于peekLast();
+	 */
+	public static void testDeque(){
+		Deque deque; 
+		
+	}
+	
 }
