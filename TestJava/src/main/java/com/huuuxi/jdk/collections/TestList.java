@@ -2,6 +2,8 @@ package com.huuuxi.jdk.collections;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+import java.util.Vector;
 
 /**
  * @author wyliujiangbin
@@ -13,7 +15,8 @@ import java.util.List;
 public class TestList {
 
 	public static void main(String[] args) {
-		testList();
+		//testList();
+		testStack();
 	}
 	/**
 	 *  retain ;
@@ -78,6 +81,46 @@ public class TestList {
 	 * 
 	 */
 	public static void testLinkedList(){
+		
+	}
+	/**
+	 * 		Vector : 实现了 RandomAccess 接口，可以快速访问；
+	 * 			和 ArrayList不同的是，增值1.5倍，他是增值 + incrementCount ，当=0的时候，*2；
+	 * 		addAll() ： 是 Synchronized
+	 * 		add(element)，addElement(element) : Synchromized
+	 * 		add(index,element) : 非安全,调用方法是 线程安全，故全部安全，包括clear
+	 * 		toArray() 和 toArray(T[]) : 经常用，区别在于toArray() 返回 Arrays.copyOf(datas,size,destin); toArray(T[]) 要判断 T的size，如果size小Arrays.copyOf(datas,length,destin)；否则全部 System.copyOf ,然后 多余的赋 null；
+	 *
+	 */
+	public static void testVector(){
+		Vector vector;
+	}
+	/**
+	 * 		Stack 还是 Vector的子类；多了几个方法；
+	 * 		peek 返回第一条数据
+	 * 		pop 返回第一条数据，并删除第一条数据
+	 * 		push 就是直接插入数据
+	 * 		search 比较犀利，因为 stack 是一个倒置的 list，故先取 lastIndexOf() 得到位置；然后 size - index 返回真正的index；
+	 */
+	public static void testStack(){
+		Stack stack = new Stack();
+		stack.push("0");
+		stack.push("1");
+		stack.push("2");
+		stack.push("3");
+		stack.push("1");
+		for(Object obj : stack){
+			System.out.println(obj.toString());
+		}
+		System.out.println("---------");
+		Vector vector = stack;
+		for(Object obj : vector){
+			System.out.println(obj.toString());
+		}
+		System.out.println("---------");
+		System.out.println("index:"+stack.indexOf("1"));
+		System.err.println("lastindex:"+stack.lastIndexOf("1"));
+		System.out.println("search:"+stack.search("1"));
 		
 	}
 }
