@@ -2,6 +2,9 @@ package com.huuuxi.jdk.concurrent;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 /**
  * 
  * @author wyliujiangbin
@@ -24,5 +27,14 @@ public class TestConcurrentLinkedQueue {
 		
 		ConcurrentLinkedQueue queue;
 		Queue q;
+	}
+	/**
+	 * Blocking Delay 下的都加 lock();
+	 * 
+	 */
+	public static void testConcurrentLinkedBlockingDeque(){
+		LinkedBlockingDeque deque;
+		LinkedBlockingQueue queue;
+		DelayQueue delayQueue;
 	}
 }
