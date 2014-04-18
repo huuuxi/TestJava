@@ -1,6 +1,7 @@
 package com.huuuxi.jdk.collections;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -66,6 +67,17 @@ public class TestMap {
 		map.put("4", "4");
 		for(Map.Entry<String, String> entry : (Set<Map.Entry<String, String>>)map.entrySet()){
 			System.out.println(entry.getKey() +":" +entry.getValue());
+		}
+	}
+	/**
+	 * 	线程安全
+	 * 	其它没有什么特殊的；
+	 */
+	public static void testHashTable(){
+		Hashtable hashtable = new Hashtable<String, String>();
+		hashtable.put(null, null);
+		for(Object obj :hashtable.entrySet()){
+			
 		}
 	}
 }
