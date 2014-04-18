@@ -3,6 +3,7 @@ package com.huuuxi.jdk.concurrent;
 import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * concurrent 包下的 集合 要么用 cas 要么用 lock();
+ * 	cas 就是不停的取值，查找；
  * @author wyliujiangbin
  *
  */
