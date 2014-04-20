@@ -1,6 +1,7 @@
 package com.huuuxi.jdk;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,10 +9,14 @@ import java.math.BigDecimal;
  * Date: 14-3-19
  * Time: 下午3:49
  * To change this template use File | Settings | File Templates.
+ * 	BigDecimal ： 里面可以指定 scale ：小数点尾数，Round 四舍五入规则；
  */
 public class TestNumber {
     /**
      * 单精度和双精度问题；
+     * 	单精度 32位 = 4字节；
+     * 	双精度 64位 = 8字节；
+     * 	long 在32位编译器里面占位 4字节，64位占8字节；
      * */
     public static void testNumber(){
 //        float f = 80838.0f;
@@ -38,7 +43,8 @@ public class TestNumber {
     public static void  main(String[] args){
         //testNumber();
     	//testNumb();
-    	testInteger();
+    	//testInteger();
+    	testRandom();
     }
 
     public static void testInteger(){
@@ -72,6 +78,19 @@ public class TestNumber {
     	System.out.println(e == f);
     	Integer g = new Integer(100); Integer h = new Integer(100);
     	System.out.println(g == h);
+    }
+    /**
+     * 测试 Random，种子一样，得到结果也一样；
+     * 	默认种子是时间；
+     */
+    public static void testRandom(){
+    	Random r1 = new Random(100);
+    	Random r2 = new Random(100);
+    	for (int i = 0; i < 2; i++) {
+    		System.out.println("r1:"+i+"::"+r1.nextInt());
+    		System.out.println("r2:"+i+"::"+r2.nextInt());
+		}
+    	
     }
 
 }
