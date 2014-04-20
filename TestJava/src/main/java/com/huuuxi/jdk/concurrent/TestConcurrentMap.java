@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 /**
  * 
  * @author wyliujiangbin
- *	ConcurrentMap 增加了桶segment机制，每个桶里面都是sychronized 调用；
+ *	ConcurrentMap 增加了桶segment机制，每个桶里面都是lock() 调用；
  */
 public class TestConcurrentMap {
 
