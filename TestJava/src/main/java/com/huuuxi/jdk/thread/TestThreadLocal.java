@@ -45,6 +45,10 @@ class Mythead extends Thread{
 	
 	public Mythead(MyClass myClass){
 		//this.myClass = myClass;
+		/**
+		 * 这个调用很巧妙，假设 myClass不是线程安全的，但是vars 的get方法，是调用 当前线程的Thread set到他的Map里面；初始化以后就跟线程走了；
+		 */
+		myClass.vars.get();
 	}
 	
 	@Override
@@ -62,10 +66,16 @@ class Mythead extends Thread{
 	}
 	
 }
+/**
+ *  ThreadLocal 默认是没值的，只有第一次get()，返回null，才初始化调用initialValue(); 
+ *  ThreadLocal 里面定义了 Map类，自己写了一套Map；
+ *  而Thread里面保留了一个 ThreadLocal.ThreadLocalMap；
+ */
 // 对象类，需要同步和local存储的；
 class MyClass{
 	public  Integer var = 0;
 	public static ThreadLocal<Integer> vars = new ThreadLocal<Integer>(){
 		protected Integer initialValue() {return 0;};
 	};
+	
 }
