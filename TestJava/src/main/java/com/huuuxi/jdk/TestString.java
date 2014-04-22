@@ -7,7 +7,8 @@ public class TestString {
 	private static final String url = "https://merchant3.chinabank.com.cn:9103/billfiles/%s/%s_%s_accountBill.xls";
 	public static void main(String[] args) {
 		//testFormat();
-		testString();
+		//testString();
+		testConstString();
 	}
 	
 	public static void testFormat(){
@@ -33,5 +34,36 @@ public class TestString {
 		String ttt = "" ;
 		System.arraycopy("123456", 1, ttt, 0, 3);
 		System.out.println(ttt);
+	}
+	/**
+	 *  String 常量池
+	 *  	intern() 补充：若String执行intern，常量池里面不存在值，就把自己的地址注册到常量池；这个是对的；
+	 *  	下面例子  String b = new String("abcde"); b.intern(); 实际上常量池已经有了 "abcde"；intern 返回的是他的地址；
+	 *  	String b = new String("abc") +"de"； b.intern() 返回的是 b的地址；
+	 */
+	public static void testConstString(){
+		String a = "hell";
+		String b = "0";
+		String c = "hello";
+		System.out.println(c == (a+b)); // 返回false，运行时，值不能用常量池；
+		System.out.println(c ==("he"+"llo")); //true，编译时，常量池；
+		System.out.println(c == (a+b).intern()); // intern返回的常量池中的值，如果常量池里面有则返回；
+		
+		String x = new String("xyz");
+		x.intern();
+		System.out.println(x == x.intern());
+		System.out.println("----");
+		String m = new String("mmm")+"nnn";
+		m.intern();
+		System.out.println(m == m.intern());
+		
+		
+		System.out.println("--");
+		String b1 = new String("cd1")+"23";
+		//b1.intern();
+		System.out.println(b1.hashCode());
+		System.out.println("cd123".hashCode());
+		System.out.println(b1 == "cd123");
+		
 	}
 }
