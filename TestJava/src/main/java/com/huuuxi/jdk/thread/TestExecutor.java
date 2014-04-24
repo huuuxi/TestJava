@@ -1,5 +1,8 @@
 package com.huuuxi.jdk.thread;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+
 public class TestExecutor {
 
 	public static void main(String[] args) {
@@ -30,4 +33,17 @@ public class TestExecutor {
 		System.out.println(Thread.activeCount());
 	}
 	
+	/**
+	 * 	Executor 里面就是执行 线程的start();
+	 *  ExecutorService 继承了 Executor接口；
+	 * 
+	 * ForkJoinPool 继承了AbstractExecutorService 
+	 * 		invoke();
+	 * ForkJoinTask 子类 RecursiveAction RecursiveTask
+	 * 		compute()
+	 */
+	public static void testExecutor(){
+		Executor executor;
+		ExecutorService executorService;
+	}
 }
