@@ -41,7 +41,7 @@ public class TestMap {
 	 * resize(size) 其实就是重新hash，新建entry[] 数组大小为size，然后把远 table里面的entry 的hash 和size 取新位置，然后put进去，即可；
 	 */
 	public static void testHashMap(){
-		
+		HashMap map;
 	}
 	/**
 	 *  和 TreeSet一样，NavigableMap  SortedMap 继承；都包含 Comparator；
