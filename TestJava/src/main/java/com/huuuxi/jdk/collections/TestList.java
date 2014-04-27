@@ -2,11 +2,15 @@ package com.huuuxi.jdk.collections;
 
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.Vector;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * @author wyliujiangbin
@@ -14,12 +18,15 @@ import java.util.Vector;
  *	ArrayList 也实现了 RandomAccess ，故也是支持 随即访问的；
  *	AbstractList 里面的iterator 定义了自己的私有类，iter类，lastIndexOf 则是返回的iterator 调用 previous
  *		modCount 为其变量：修改次数；
+ *	
+ *	for each 其实调用的就是 iterator ；语法糖
  */
 public class TestList {
 
 	public static void main(String[] args) {
 		//testList();
-		testStack();
+		//testStack();
+		testList();
 	}
 	/**
 	 *  retain ;
@@ -35,6 +42,17 @@ public class TestList {
 		list2.add("b");
 		list2.add(1, "c");
 		list2.add(2,"d");
+		
+		Iterator it = list1.iterator();
+		while(it.hasNext()){
+			list1.remove(0);
+		}
+		
+		for(Object str : list1){
+			list1.remove(str);
+			
+		}
+		
 		list1.retainAll(list2);
 		for(Object str : list1){
 			System.out.println(str.toString());
@@ -143,7 +161,11 @@ public class TestList {
 	 */
 	public static void testDeque(){
 		Deque deque; 
-		
+		ListIterator list;
+		// 同步队列，里面没有存储内容，放入一个值，只能等待取；
+		SynchronousQueue queue;
+		//一个 特殊的队列，带有优先级，实际是排序，需要提供 comparetor
+		PriorityQueue priorityQueue;
 	}
 	
 }

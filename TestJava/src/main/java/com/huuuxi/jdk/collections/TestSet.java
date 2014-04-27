@@ -1,5 +1,6 @@
 package com.huuuxi.jdk.collections;
 
+import java.util.BitSet;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -13,7 +14,8 @@ import java.util.TreeSet;
  */
 public class TestSet {
 	public static void main(String[] args) {
-		testSet();
+		//testSet();
+		testBitSet();
 	}
 	
 	public static void testSet(){
@@ -47,5 +49,21 @@ public class TestSet {
 	 */
 	public static void testTreeSet(){
 		TreeSet set ;
+	}
+	/**
+	 * 	BitSet 默认是 64位，那么就存储 64个数字； 类似oracle的bit hash；
+	 * 	里面存储 整数，字符 比较靠谱
+	 * 
+	 */
+	public static void testBitSet(){
+		BitSet bit = new BitSet();
+		System.out.println(bit.size());
+		//bit.set('a');
+		//bit.set('A');
+		bit.set(-4);
+		bit.set(0);
+		bit.set(63);
+		System.out.println(bit.size());
+		System.out.println(bit.get(0, 128));
 	}
 }

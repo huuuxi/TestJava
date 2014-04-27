@@ -1,5 +1,6 @@
 package com.huuuxi.jdk.collections;
 
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedHashMap;
@@ -77,7 +78,7 @@ public class TestMap {
 		Hashtable hashtable = new Hashtable<String, String>();
 		hashtable.put(null, null);
 		for(Object obj :hashtable.entrySet()){
-			
+			BitSet bitSet;
 		}
 	}
 }

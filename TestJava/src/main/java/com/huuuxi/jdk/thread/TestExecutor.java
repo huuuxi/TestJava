@@ -2,6 +2,7 @@ package com.huuuxi.jdk.thread;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class TestExecutor {
 
@@ -45,5 +46,6 @@ public class TestExecutor {
 	public static void testExecutor(){
 		Executor executor;
 		ExecutorService executorService;
+		ScheduledExecutorService scheduledExecutorService;
 	}
 }

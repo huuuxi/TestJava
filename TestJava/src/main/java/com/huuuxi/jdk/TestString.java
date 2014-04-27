@@ -8,7 +8,8 @@ public class TestString {
 	public static void main(String[] args) {
 		//testFormat();
 		//testString();
-		testConstString();
+		//testConstString();
+		testStringBuffer();
 	}
 	
 	public static void testFormat(){
@@ -65,5 +66,12 @@ public class TestString {
 		System.out.println("cd123".hashCode());
 		System.out.println(b1 == "cd123");
 		
+	}
+	
+	public static void testStringBuffer(){
+		StringBuffer buffer =  new StringBuffer();
+		buffer.append("hello");
+		String reverse = buffer.reverse().toString();
+		System.out.println(reverse);
 	}
 }
