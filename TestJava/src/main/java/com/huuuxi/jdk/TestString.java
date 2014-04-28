@@ -9,7 +9,8 @@ public class TestString {
 		//testFormat();
 		//testString();
 		//testConstString();
-		testStringBuffer();
+//		testStringBuffer();
+		testEquals();
 	}
 	
 	public static void testFormat(){
@@ -74,4 +75,34 @@ public class TestString {
 		String reverse = buffer.reverse().toString();
 		System.out.println(reverse);
 	}
+	/**
+	 * 
+	 * @author admin
+	 *	Object t = new StringEquals();  这个很神奇，运行的时候是 StringEquals；编译的时候是 Object
+	 *	故要加 Override
+	 */
+	class StringEquals {
+		
+		//@Override
+		public boolean equals(StringEquals obj) {
+			System.out.println("override ....");
+			return true;
+		}
+	}
+	public static void testEquals(){
+		StringEquals s1 = new TestString().new StringEquals();
+		StringEquals s2 = new TestString().new StringEquals();
+		
+		Object s3 = new TestString().new StringEquals();
+		Object s4 = new TestString().new StringEquals();
+		
+		if (s1.equals(s2)) {
+			System.out.println("s1 == s2");
+		}
+		if (s3.equals(s4)) {
+			System.out.println("s3 == s4");
+		}
+		
+	}
+	
 }
