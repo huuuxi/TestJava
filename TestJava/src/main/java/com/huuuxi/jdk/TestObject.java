@@ -3,7 +3,9 @@ package com.huuuxi.jdk;
 public class TestObject {
 
 	public static void main(String[] args) {
-		testZ();
+//		testZ();
+//		testInterger();
+		testClone();
 	}
 	
 	/**
@@ -36,8 +38,37 @@ public class TestObject {
 		s = t;
 		t = temp;;
 	}
+	
+	/**
+	 * Integer 会缓存 -128~127 数字，故得到的地址是一样的；
+	 */
+	public static void testInterger(){
+		Integer a = 130;
+		Integer b = 130;
+		System.out.println(a == b);
+		Integer c = new Integer(100);
+		Integer d = new Integer(100);
+		System.out.println(c == d);
+	}
+	
+	public static void testClone(){
+		Strings s = new Strings();
+		s.ts = "111";
+		Strings ss = s.clone();
+		System.out.println(s == ss);
+		System.out.println(ss.ts);
+	}
 }
 
-class Strings {
+class Strings implements Cloneable{
 	String ts ;
+	public Strings clone(){
+		try {
+			return (Strings) super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println("eee");
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

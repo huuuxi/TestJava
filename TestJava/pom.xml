@@ -80,7 +80,19 @@
 		<artifactId>commons-httpclient</artifactId>
 		<version>3.1</version>
 	</dependency>
-                   
-	            
+     <dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.3</version>
+	</dependency>
+        
+       <!--  apache common 源码阅读  -->                 
+	 <dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.3</version>
+	</dependency>
+            
+                       
   </dependencies>
 </project>

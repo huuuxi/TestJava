@@ -1,7 +1,11 @@
 package com.huuuxi.jdk.thread;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,6 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Date: 14-3-19
  * Time: 下午5:49
  * To change this template use File | Settings | File Templates.
+ * 基于 AQS的 state进行加锁机制
  */
 public class TestLockSyc {
     private volatile int id;
@@ -46,8 +51,26 @@ public class TestLockSyc {
         synchronized (TestLockSyc.class){
 
         }
+        /**
+         * 排他锁，排序到队列；
+         */
         ReentrantLock lock;
-
+        /**
+         * 维持一个资源，分配，10为限制，那么维护10；信号量机制
+         */
+        Semaphore semaphore;
+        /**
+         *  减一操作，为0，闩到了执行；只能使用一次
+         */
+        CountDownLatch countDownLatch;
+        /**
+         * 可以重复使用，线程递增到固定值，然后释放await；
+         */
+        CyclicBarrier cyclicBarrier;
+        /**
+         * 里面定义两把锁，一个读，可以共享；一个写，独占；
+         */
+        ReentrantReadWriteLock reentrantReadWriteLock;
     }
 }
 

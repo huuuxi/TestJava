@@ -158,6 +158,7 @@ public class TestList {
 	/**
 	 * 	 有意思的方法：addFirst() addLast(),区别于 offerFirst() offerLast() ，前者在队列 不限制的时候使用，后者需要在队列大小限制的时候使用；
 	 * 			getFrist() getLast() 都会抛出异常，假如不存在；相对于peekLast();
+	 * 	
 	 */
 	public static void testDeque(){
 		Deque deque; 
@@ -165,6 +166,7 @@ public class TestList {
 		// 同步队列，里面没有存储内容，放入一个值，只能等待取；
 		SynchronousQueue queue;
 		//一个 特殊的队列，带有优先级，实际是排序，需要提供 comparetor
+			//线程安全的也提供了，PriorityBlockingQueue
 		PriorityQueue priorityQueue;
 	}
 	
