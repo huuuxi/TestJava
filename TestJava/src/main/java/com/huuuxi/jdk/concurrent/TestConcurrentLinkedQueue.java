@@ -1,10 +1,12 @@
 package com.huuuxi.jdk.concurrent;
 
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 /**
  * 
  * @author wyliujiangbin
@@ -35,6 +37,15 @@ public class TestConcurrentLinkedQueue {
 	public static void testConcurrentLinkedBlockingDeque(){
 		LinkedBlockingDeque deque;
 		LinkedBlockingQueue queue;
+		/**
+		 * DelayQueue,PriorityBlockingQueue 实现用的是 PriorityQueue
+		 */
 		DelayQueue delayQueue;
+		PriorityBlockingQueue priorityBlockingQueue; 
+		/**
+		 * 数组，固定大小，三个标志位，takeIndex、putIndex、count
+		 */
+		ArrayBlockingQueue arrayBlockingQueue;
+		
 	}
 }
