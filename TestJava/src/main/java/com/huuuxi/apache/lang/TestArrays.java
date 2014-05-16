@@ -1,5 +1,6 @@
 package com.huuuxi.apache.lang;
 
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.commons.lang3.ArrayUtils;
 
 
