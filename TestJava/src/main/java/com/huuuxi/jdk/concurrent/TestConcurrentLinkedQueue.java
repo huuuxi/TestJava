@@ -39,6 +39,7 @@ public class TestConcurrentLinkedQueue {
 		LinkedBlockingQueue queue;
 		/**
 		 * DelayQueue,PriorityBlockingQueue 实现用的是 PriorityQueue
+		 * DelayQueue 实现用的是 PriorityQueue
 		 */
 		DelayQueue delayQueue;
 		PriorityBlockingQueue priorityBlockingQueue; 

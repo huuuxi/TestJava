@@ -14,8 +14,8 @@ import java.util.Random;
 public class TestNumber {
     /**
      * 单精度和双精度问题；
-     * 	单精度 32位 = 4字节；
-     * 	双精度 64位 = 8字节；
+     * 	单精度 32位 = 4字节；float
+     * 	双精度 64位 = 8字节；double
      * 	long 在32位编译器里面占位 4字节，64位占8字节；
      * */
     public static void testNumber(){
@@ -44,7 +44,8 @@ public class TestNumber {
         //testNumber();
     	//testNumb();
     	//testInteger();
-    	testRandom();
+//    	testRandom();
+    	System.out.println(Long.MAX_VALUE > Float.MAX_VALUE);
     }
 
     public static void testInteger(){
