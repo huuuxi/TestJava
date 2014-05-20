@@ -1,5 +1,6 @@
 package com.huuuxi.jdk.concurrent;
 
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * concurrent 包下的 集合 要么用 cas 要么用 lock();
@@ -18,5 +19,9 @@ public class testConcurrentSetList {
 	 */
 	public static void testCopyOnWriteList(){
 		CopyOnWriteArrayList list;
+		/***
+		 * skipList 跳表，和 红黑树比较；更加简单，并发高些；
+		 */
+		ConcurrentSkipListMap skipListMap;
 	}
 }

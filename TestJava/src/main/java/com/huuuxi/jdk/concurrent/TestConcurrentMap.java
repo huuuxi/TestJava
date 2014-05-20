@@ -7,7 +7,15 @@ import java.util.concurrent.ConcurrentSkipListMap;
 /**
  * 
  * @author wyliujiangbin
- *	ConcurrentMap 增加了桶segment机制，每个桶里面都是lock() 调用；
+ *	ConcurrentMap 增加了桶segment机制，每个桶里面都是lock() 调用；锁用的是 ReentrantLock 继承
+ *	
+ * 取count: 取两次count，然后比较，如果改变了，那么就加锁取真正的count；
+ * get的时候，第一次不需要加锁，只有取到为null的时候才加锁；
+ * 为什么读get不需要加锁，因为happen-before原则，要求其能够保证写在前；
+ * 
+ * 扩容，segment的扩容是这样达到的，他是先添加，然后判断是否需要扩容，这样就避免了 加入没有添加而扩容了；
+ * 
+ * 几个名次：偏移量、掩码
  */
 public class TestConcurrentMap {
 
