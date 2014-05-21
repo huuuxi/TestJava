@@ -45,7 +45,7 @@ public class TestNumber {
     	//testNumb();
     	//testInteger();
 //    	testRandom();
-    	System.out.println(Long.MAX_VALUE > Float.MAX_VALUE);
+//    	System.out.println(Long.MAX_VALUE > Float.MAX_VALUE);
     }
 
     public static void testInteger(){
