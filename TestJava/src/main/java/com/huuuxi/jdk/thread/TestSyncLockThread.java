@@ -7,7 +7,6 @@ import java.net.UnknownHostException;
 public class TestSyncLockThread {
 
 	public static void main(String[] args) {
-		
 		for(int i = 0 ;i < 1 ;i++){
 			Thread t = new Thread(new LockThread("--"+i));
 			t.start();
@@ -64,5 +63,12 @@ class LockThread extends Thread{
 			}
 		}
 		return null;
+		
+//		for(int i = 0 ;i < 400 ;i++){
+//			Thread t = new Thread(new LockThread("--"+i));
+//			t.start();
+//		}
 	}
 }
+
+
