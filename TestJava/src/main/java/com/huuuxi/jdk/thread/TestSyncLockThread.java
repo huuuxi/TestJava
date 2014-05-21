@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 public class TestSyncLockThread {
 
 	public static void main(String[] args) {
-		for(int i = 0 ;i < 1 ;i++){
+		for(int i = 0 ;i < 4 ;i++){
 			Thread t = new Thread(new LockThread("--"+i));
 			t.start();
 		}
@@ -25,7 +25,13 @@ class LockThread extends Thread{
 	public String name ;
 	public void run(){
 		System.out.println("Thread :"+ name +" is running");
-		while (!("UID"==get())) {
+		while (!("UID".equals(get("UID")))) {
+			try {
+				sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		System.out.println(name+": get DATA:" + TestSyncLock.DATA);
 		try {
@@ -36,18 +42,20 @@ class LockThread extends Thread{
 		}
 		TestSyncLock.DATA = TestSyncLock.DATA - 10;
 		System.out.println(name+": write DATA:" + TestSyncLock.DATA);
-		TestSyncLock.pool.remove(key);
+		get("ABC");
 		System.out.println(name +": remove the key");
 	}
 	
-	private String get(){
+	private String get(String key){
 		Socket s = null;
 		try {
 			s = new Socket("127.0.0.1", 8080);
-			s.getOutputStream().write("UID".getBytes());
+			s.getOutputStream().write(key.getBytes());
 			byte[] b = new byte[3];
 			s.getInputStream().read(b);
-			return new String(b);
+			String sb = new String(b);
+			System.out.println("jiojojojio:"+sb);
+			return sb;
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

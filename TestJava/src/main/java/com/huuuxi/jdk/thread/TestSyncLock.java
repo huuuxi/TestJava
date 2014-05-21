@@ -23,7 +23,12 @@ public class TestSyncLock {
 				int length = input.read(b);
 				
 				String str = new String(b);
-				s.getOutputStream().write(TestSyncLock.require(str).getBytes());
+				if (str.equals("UID")) {
+					s.getOutputStream().write(TestSyncLock.require(str).getBytes());
+				}else {
+					remove("UID");
+				}
+				s.close();
 			}
 			
 		} catch (IOException e) {
@@ -38,6 +43,7 @@ public class TestSyncLock {
 	public static volatile Integer DATA = 1000;
 	
 	public  static String  require(String key){
+		System.out.println(key);
 		if (key == key.intern()) {
 			System.err.println(" error");
 		}
@@ -50,6 +56,11 @@ public class TestSyncLock {
 				return "ABC";
 			}
 		}
+	}
+	
+	
+	public static void remove(String key){
+		pool.remove(key);
 	}
 }
 
