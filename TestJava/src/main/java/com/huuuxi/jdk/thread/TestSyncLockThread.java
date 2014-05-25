@@ -27,7 +27,7 @@ class LockThread extends Thread{
 		System.out.println("Thread :"+ name +" is running");
 		while (!("UID".equals(get("UID")))) {
 			try {
-				sleep(300);
+				sleep(3000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
